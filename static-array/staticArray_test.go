@@ -66,3 +66,20 @@ func TestStaticArray_Len(t *testing.T) {
 		t.Errorf("Len() after Set = %d; want %d", got, size)
 	}
 }
+
+func TestStaticArray_Cap(t *testing.T) {
+	const size = 5
+	arr := NewStaticArray[int](size)
+
+	if got := arr.Cap(); got != size {
+		t.Errorf("Cap() = %d; want %d", got, size)
+	}
+
+	ok := arr.Set(0, 42)
+	if !ok {
+		t.Fatalf("Set() failed for index 0")
+	}
+	if got := arr.Cap(); got != size {
+		t.Errorf("Cap() after Set = %d; want %d", got, size)
+	}
+}
