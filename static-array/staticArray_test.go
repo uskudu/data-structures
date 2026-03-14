@@ -121,3 +121,41 @@ func TestStaticArray_Get(t *testing.T) {
 		})
 	}
 }
+
+func TestStaticArray_Set(t *testing.T) {
+	const size = 3
+	arr := NewStaticArray[int](size)
+
+	tests := []struct {
+		name   string
+		index  int
+		value  int
+		wantOk bool
+	}{
+		{"valid index 0", 0, 100, true},
+		{"valid index 1", 1, 200, true},
+		{"valid index 2", 2, 300, true},
+		{"negative index", -1, 0, false},
+		{"index equal len", size, 0, false},
+		{"index > len", size + 1, 0, false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			ok := arr.Set(tt.index, tt.value)
+			if ok != tt.wantOk {
+				t.Fatalf("Set() ok = %v; want %v", ok, tt.wantOk)
+			}
+
+			if ok {
+				v, gotOk := arr.Get(tt.index)
+				if !gotOk {
+					t.Fatalf("Get() failed for index %d after Set", tt.index)
+				}
+				if v != tt.value {
+					t.Errorf("Get() = %d; want %d", v, tt.value)
+				}
+			}
+		})
+	}
+}
