@@ -83,3 +83,41 @@ func TestStaticArray_Cap(t *testing.T) {
 		t.Errorf("Cap() after Set = %d; want %d", got, size)
 	}
 }
+
+func TestStaticArray_Get(t *testing.T) {
+	const size = 3
+	arr := NewStaticArray[int](size)
+
+	for i := 0; i < size; i++ {
+		ok := arr.Set(i, i*10)
+		if !ok {
+			t.Fatalf("Set() failed for index %d", i)
+		}
+	}
+
+	tests := []struct {
+		name      string
+		index     int
+		wantValue int
+		wantOk    bool
+	}{
+		{"valid index 0", 0, 0, true},
+		{"valid index 1", 1, 10, true},
+		{"valid index 2", 2, 20, true},
+		{"negative index", -1, 0, false},
+		{"index equal len", size, 0, false},
+		{"index > len", size + 1, 0, false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			v, ok := arr.Get(tt.index)
+			if ok != tt.wantOk {
+				t.Fatalf("Get() ok = %v; want %v", ok, tt.wantOk)
+			}
+			if ok && v != tt.wantValue {
+				t.Errorf("Get() = %d; want %d", v, tt.wantValue)
+			}
+		})
+	}
+}
