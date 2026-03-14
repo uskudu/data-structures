@@ -1,7 +1,25 @@
 package static_array
 
+import (
+	"fmt"
+	"strings"
+)
+
 type StaticArray[T any] struct {
 	data []T
+}
+
+func (s *StaticArray[T]) String() string {
+	var b strings.Builder
+	b.WriteByte('[')
+	for i, v := range s.data {
+		if i > 0 {
+			b.WriteString(", ")
+		}
+		fmt.Fprint(&b, v)
+	}
+	b.WriteByte(']')
+	return b.String()
 }
 
 func (s *StaticArray[T]) Len() int {
