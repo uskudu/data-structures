@@ -133,3 +133,37 @@ func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
 	cur = n
 	return true
 }
+
+// Del deletes node with index zeroBasedIdx
+func (l *LinkedList) Del(zeroBasedIdx int) bool {
+	// use DelFront for deleted front
+	if zeroBasedIdx < 1 {
+		return false
+	}
+
+	// if no elems in LinkedList
+	if l.Head == nil {
+		return false
+	}
+
+	// if one elem in LinkedList
+	if l.Head == l.Tail {
+		l.Head = nil
+		return true
+	}
+
+	// if more than one elem in LinkedList
+	prev := l.Head
+	cur := l.Head
+	curIdx := 0
+
+	for curIdx != zeroBasedIdx {
+		prev = cur
+		cur = cur.Next
+		curIdx++
+	}
+
+	prev.Next = cur.Next
+	cur.Next = nil
+	return true
+}
