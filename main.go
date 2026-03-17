@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	n := sll.Node{
+	n := &sll.Node{
 		Value: 2,
 		Next:  nil,
 	}
@@ -20,4 +20,8 @@ func main() {
 
 	l.PushBack(3)
 	fmt.Println(l.Tail)
+
+	l.DelFront()
+	fmt.Println(l.Head)
+
 }
