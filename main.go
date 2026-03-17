@@ -21,7 +21,6 @@ func main() {
 	l.PushBack(3)
 	fmt.Println(l.Tail)
 
-	l.DelFront()
-	fmt.Println(l.Head)
-
+	l.DelBack()
+	fmt.Println(l.Tail)
 }

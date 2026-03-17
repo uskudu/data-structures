@@ -11,7 +11,10 @@ type LinkedList struct {
 }
 
 func NewLinkedList(head *Node) *LinkedList {
-	return &LinkedList{Head: head}
+	if head == nil {
+		return &LinkedList{}
+	}
+	return &LinkedList{Head: head, Tail: head}
 }
 
 func (l *LinkedList) PushFront(val int) {
@@ -46,4 +49,23 @@ func (l *LinkedList) DelFront() {
 	if l.Head == nil {
 		l.Tail = nil
 	}
+}
+
+func (l *LinkedList) DelBack() {
+	if l.Tail == nil {
+		return
+	}
+	if l.Head == l.Tail {
+		l.Head = nil
+		l.Tail = nil
+		return
+	}
+
+	cur := l.Head
+	for cur.Next != l.Tail {
+		cur = cur.Next
+	}
+
+	cur.Next = nil
+	l.Tail = cur
 }
