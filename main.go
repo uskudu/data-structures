@@ -7,7 +7,7 @@ import (
 
 func main() {
 	n := sll.Node{
-		Value: 1,
+		Value: 2,
 		Next:  nil,
 	}
 
@@ -15,7 +15,9 @@ func main() {
 
 	fmt.Println(l.Head)
 
-	l.PushFront(2)
+	l.PushFront(1)
 	fmt.Println(l.Head)
 
+	l.PushBack(3)
+	fmt.Println(l.Tail)
 }
