@@ -15,8 +15,10 @@ func main() {
 
 	l.PushFront(1)
 	l.PushBack(3)
+	l.PushBack(4)
 
 	fmt.Println(l.String())
-	l.Push(, 4)
+
+	l.Del(4)
 	fmt.Println(l.String())
 }

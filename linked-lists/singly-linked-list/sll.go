@@ -98,9 +98,13 @@ func (l *LinkedList) String() string {
 
 // Push sets node with Value val at index zeroBasedIdx
 func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
-	// use PushFront for inserting front
-	if zeroBasedIdx < 1 {
+	if zeroBasedIdx < 0 {
 		return false
+	}
+	// use PushFront for inserting front
+	if zeroBasedIdx == 0 {
+		l.PushFront(val)
+		return true
 	}
 
 	n := &Node{Value: val}
@@ -136,9 +140,13 @@ func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
 
 // Del deletes node with index zeroBasedIdx
 func (l *LinkedList) Del(zeroBasedIdx int) bool {
-	// use DelFront for deleted front
-	if zeroBasedIdx < 1 {
+	if zeroBasedIdx < 0 {
 		return false
+	}
+	// use DelFront for inserting front
+	if zeroBasedIdx == 0 {
+		l.DelFront()
+		return true
 	}
 
 	// if no elems in LinkedList
@@ -157,7 +165,7 @@ func (l *LinkedList) Del(zeroBasedIdx int) bool {
 	cur := l.Head
 	curIdx := 0
 
-	for curIdx != zeroBasedIdx {
+	for curIdx != zeroBasedIdx && cur.Next != nil {
 		prev = cur
 		cur = cur.Next
 		curIdx++
