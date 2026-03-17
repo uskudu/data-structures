@@ -122,7 +122,7 @@ func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
 	prev := l.Head
 	curIdx := 0
 
-	for curIdx != zeroBasedIdx {
+	for curIdx != zeroBasedIdx && cur != nil {
 		prev = cur
 		cur = cur.Next
 		curIdx++
@@ -167,3 +167,17 @@ func (l *LinkedList) Del(zeroBasedIdx int) bool {
 	cur.Next = nil
 	return true
 }
+
+//
+//func (l *LinkedList) DelNode(node Node) bool {
+//
+//}
+//
+//// GetNodeByIndex returns Node with index zeroBasedIdx
+//func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) Node {
+//
+//}
+//
+//func (l *LinkedList) Len() int {
+//
+//}

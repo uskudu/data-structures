@@ -13,13 +13,10 @@ func main() {
 
 	l := sll.NewLinkedList(n)
 
-	fmt.Println(l.Head)
-
 	l.PushFront(1)
-	fmt.Println(l.Head)
-
 	l.PushBack(3)
-	fmt.Println(l.Tail)
 
+	fmt.Println(l.String())
+	l.Push(, 4)
 	fmt.Println(l.String())
 }
