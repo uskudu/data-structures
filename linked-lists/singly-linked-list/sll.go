@@ -95,3 +95,41 @@ func (l *LinkedList) String() string {
 	b.WriteString("]")
 	return b.String()
 }
+
+// Push sets node with Value val at index zeroBasedIdx
+func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
+	// use PushFront for inserting front
+	if zeroBasedIdx < 1 {
+		return false
+	}
+
+	n := &Node{Value: val}
+
+	// if no elems in LinkedList
+	if l.Head == nil {
+		l.Head = n
+		return true
+	}
+
+	// if one elem in LinkedList
+	if l.Head == l.Tail {
+		l.Head.Next = n
+		return true
+	}
+
+	// if more than one elem in LinkedList
+	cur := l.Head
+	prev := l.Head
+	curIdx := 0
+
+	for curIdx != zeroBasedIdx {
+		prev = cur
+		cur = cur.Next
+		curIdx++
+	}
+
+	prev.Next = n
+	n.Next = cur
+	cur = n
+	return true
+}
