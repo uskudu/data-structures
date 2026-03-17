@@ -21,6 +21,5 @@ func main() {
 	l.PushBack(3)
 	fmt.Println(l.Tail)
 
-	l.DelBack()
-	fmt.Println(l.Tail)
+	fmt.Println(l.String())
 }
