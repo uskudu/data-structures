@@ -5,17 +5,21 @@ import (
 	"strings"
 )
 
-type Node struct {
+type node struct {
 	Value int
-	Next  *Node
+	Next  *node
 }
 
 type LinkedList struct {
-	Head *Node
-	Tail *Node
+	Head *node
+	Tail *node
 }
 
-func NewLinkedList(head *Node) *LinkedList {
+func NewNode(val int) *node {
+	return &node{Value: val}
+}
+
+func NewLinkedList(head *node) *LinkedList {
 	if head == nil {
 		return &LinkedList{}
 	}
@@ -47,7 +51,7 @@ func (l *LinkedList) String() string {
 }
 
 func (l *LinkedList) PushFront(val int) {
-	n := &Node{Value: val}
+	n := &node{Value: val}
 
 	n.Next = l.Head
 	l.Head = n
@@ -58,7 +62,7 @@ func (l *LinkedList) PushFront(val int) {
 }
 
 func (l *LinkedList) PushBack(val int) {
-	n := &Node{Value: val}
+	n := &node{Value: val}
 
 	if l.Tail == nil {
 		l.Head = n
@@ -111,7 +115,7 @@ func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
 		return true
 	}
 
-	n := &Node{Value: val}
+	n := &node{Value: val}
 
 	// if no elems in LinkedList
 	if l.Head == nil {
@@ -192,8 +196,8 @@ func (l *LinkedList) Len() int {
 	return res
 }
 
-// GetNodeByIndex returns Node with index zeroBasedIdx
-func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *Node {
+// GetNodeByIndex returns node with index zeroBasedIdx
+func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *node {
 	if zeroBasedIdx < 0 || l.Head == nil {
 		return nil
 	}
@@ -228,4 +232,11 @@ func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *Node {
 //}
 
 // ToSlice turns LinkedList into slice
-//func (l *LinkedList) ToSlice() {}
+//func (l *LinkedList) ToSlice() []int {
+//	var res []int
+//	if l.Head == nil {
+//		return res
+//	}
+//
+//
+//}

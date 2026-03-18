@@ -16,7 +16,7 @@ func TestNewLinkedList(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		n := &Node{
+		n := &node{
 			Value: tt.value,
 		}
 		l := NewLinkedList(n)
@@ -41,7 +41,7 @@ func TestLinkedList_PushFront(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		n := &Node{
+		n := &node{
 			Value: 5,
 		}
 		l := NewLinkedList(n)
