@@ -82,3 +82,18 @@ func (l *LinkedList) PushBack(val int) {
 	n.Previous = l.Tail
 	l.Tail = n
 }
+
+// Sliced turns LinkedList into slice
+func (l *LinkedList) Sliced() []int {
+	var res []int
+	if l.Head == nil {
+		return res
+	}
+
+	cur := l.Head
+	for cur != nil {
+		res = append(res, cur.Value)
+		cur = cur.Next
+	}
+	return res
+}
