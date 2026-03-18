@@ -6,11 +6,11 @@ import (
 )
 
 func main() {
-	n := &sll.Node{
-		Value: "qweee",
-	}
+	//n := &sll.Node{
+	//	Value: 1,
+	//}
 
-	l := sll.NewLinkedList(n)
+	l := sll.NewLinkedList(nil)
 	fmt.Println(l)
 	//
 	//l.PushFront(1)
