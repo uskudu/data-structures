@@ -96,6 +96,22 @@ func (l *LinkedList) DelFront() {
 	}
 }
 
+func (l *LinkedList) DelBack() {
+	if l.Tail == nil {
+		return
+	}
+	if l.Head == l.Tail {
+		l.Head = nil
+		l.Tail = nil
+		return
+	}
+
+	newTail := l.Tail.Previous
+	newTail.Next = nil
+	l.Tail.Previous = nil
+	l.Tail = newTail
+}
+
 // Sliced turns LinkedList into slice
 func (l *LinkedList) Sliced() []int {
 	var res []int
