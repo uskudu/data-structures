@@ -7,18 +7,18 @@ import (
 
 func main() {
 	n := &sll.Node{
-		Value: 2,
-		Next:  nil,
+		Value: "qweee",
 	}
 
 	l := sll.NewLinkedList(n)
-
-	l.PushFront(1)
-	l.PushBack(3)
-	l.PushBack(4)
-
-	fmt.Println(l.String())
-
-	l.Del(4)
-	fmt.Println(l.String())
+	fmt.Println(l)
+	//
+	//l.PushFront(1)
+	//l.PushBack(3)
+	//l.PushBack(4)
+	//
+	//fmt.Println(l.String())
+	//
+	//l.Del(4)
+	//fmt.Println(l.String())
 }
