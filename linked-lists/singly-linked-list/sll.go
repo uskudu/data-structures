@@ -19,6 +19,9 @@ func NewLinkedList(head *Node) *LinkedList {
 	if head == nil {
 		return &LinkedList{}
 	}
+	if head.Next != nil {
+		return nil
+	}
 	return &LinkedList{Head: head, Tail: head}
 }
 
@@ -34,7 +37,7 @@ func (l *LinkedList) String() string {
 
 	cur := l.Head
 	for cur.Next != nil {
-		fmt.Fprintf(&b, "{%d, %d}, ", cur.Value, cur.Next.Value)
+		fmt.Fprintf(&b, "{%d, %d} -> ", cur.Value, cur.Next.Value)
 		cur = cur.Next
 	}
 	fmt.Fprintf(&b, "{%d, nil}", cur.Value)
@@ -97,6 +100,7 @@ func (l *LinkedList) DelBack() {
 }
 
 // Push sets node with Value val at index zeroBasedIdx
+// returns true if pushed, else false
 func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
 	if zeroBasedIdx < 0 {
 		return false
@@ -138,8 +142,9 @@ func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
 	return true
 }
 
-// Del deletes node with index zeroBasedIdx
-func (l *LinkedList) Del(zeroBasedIdx int) bool {
+// DelIndex deletes node with index zeroBasedIdx
+// returns true if deleted, else false
+func (l *LinkedList) DelIndex(zeroBasedIdx int) bool {
 	if zeroBasedIdx < 0 {
 		return false
 	}
@@ -208,10 +213,6 @@ func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *Node {
 	return cur
 }
 
-//func (l *LinkedList) DelNode(node Node) bool {
-//
-//}
-
 // BulkFront pushes multiple values into front of LinkedList in provided order
 //func (l *LinkedList) BulkFront(values []int) {
 //
@@ -221,3 +222,10 @@ func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *Node {
 //func (l *LinkedList) BulkBack(values []int) {
 //
 //}
+
+//func (l *LinkedList) Reverse() {
+//
+//}
+
+// ToSlice turns LinkedList into slice
+//func (l *LinkedList) ToSlice() {}
