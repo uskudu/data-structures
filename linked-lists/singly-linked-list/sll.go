@@ -262,14 +262,16 @@ func (l *LinkedList) Sliced() []int {
 	return res
 }
 
-//// LinkedSlice may remake to accept tail too
-//// head and tail work like mathematical []
-////
-//// works like slicing in python, examples:
-//// you have LinkedList a := [1, 2, 3, 4, 5]
-//// b := a.LinkedSlice(2, 4, 1) will result b := [2, 3, 4]
-//// c := a.LinkedSlice(1, 4, 2) will result c := [1, 3]
-//// d := a.LinkedSlice(1, 4, -1) will result d := [4, 3, 2]
+// LinkedSlice may remake to accept tail too
+// head and tail work like mathematical []
+//
+// works like slicing in python
+// examples:
+// assume we have LinkedList a := [1, 2, 3, 4, 5]
+// b := a.LinkedSlice(2, 4, 1) will result b := [2, 3, 4]
+// c := a.LinkedSlice(1, 4, 2) will result c := [1, 3]
+// d := a.LinkedSlice(1, 4, -1) will result d := [4, 3, 2]
+//
 //func (l *LinkedList) LinkedSlice(head int, tail int, step int) *LinkedList {
 //
 //}
