@@ -19,6 +19,7 @@ func NewLinkedList(headVal int) *LinkedList {
 	head := &node{
 		Value: headVal,
 	}
+	head.Next = head
 	return &LinkedList{Head: head, Tail: head}
 }
 
@@ -33,12 +34,28 @@ func (l *LinkedList) String() string {
 	b.WriteString("[")
 
 	cur := l.Head
-	for cur.Next != nil {
-		fmt.Fprintf(&b, "{%d, %d} -> ", cur.Value, cur.Next.Value)
+	for {
+		fmt.Fprintf(&b, "{%d, %d}", cur.Value, cur.Next.Value)
+
 		cur = cur.Next
+		if cur == l.Head {
+			break
+		}
+		b.WriteString(" -> ")
 	}
-	fmt.Fprintf(&b, "{%d, %d}", cur.Value, l.Head.Value)
 
 	b.WriteString("]")
 	return b.String()
+}
+
+func (l *LinkedList) PushFront(val int) {
+	n := &node{Value: val}
+
+	n.Next = l.Head
+	l.Head = n
+	l.Tail.Next = n
+
+	if l.Tail == nil {
+		l.Tail = n
+	}
 }
