@@ -15,17 +15,11 @@ type LinkedList struct {
 	Tail *node
 }
 
-func NewNode(val int) *node {
-	return &node{Value: val}
-}
+func NewLinkedList(headVal int) *LinkedList {
+	head := &node{
+		Value: headVal,
+	}
 
-func NewLinkedList(head *node) *LinkedList {
-	if head == nil {
-		return &LinkedList{}
-	}
-	if head.Next != nil {
-		return nil
-	}
 	return &LinkedList{Head: head, Tail: head}
 }
 

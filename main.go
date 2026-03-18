@@ -6,9 +6,8 @@ import (
 )
 
 func main() {
-	n := sll.NewNode(1)
 
-	l := sll.NewLinkedList(n)
+	l := sll.NewLinkedList(1)
 	l.PushBack(2)
 	l.PushBack(3)
 	l.PushBack(4)
