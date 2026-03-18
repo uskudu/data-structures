@@ -196,26 +196,26 @@ func (l *LinkedList) Len() int {
 	return res
 }
 
-// GetNodeByIndex returns node with index zeroBasedIdx
-func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *node {
-	if zeroBasedIdx < 0 || l.Head == nil {
-		return nil
-	}
-	if l.Head == l.Tail {
-		return l.Head
-	}
-
-	curIdx := 0
-	cur := l.Head
-	for curIdx != zeroBasedIdx && cur != nil {
-		if curIdx > zeroBasedIdx {
-			return nil
-		}
-		cur = cur.Next
-		curIdx++
-	}
-	return cur
-}
+//// GetNodeByIndex returns node with index zeroBasedIdx
+//func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *node {
+//	if zeroBasedIdx < 0 || l.Head == nil {
+//		return nil
+//	}
+//	if l.Head == l.Tail {
+//		return l.Head
+//	}
+//
+//	curIdx := 0
+//	cur := l.Head
+//	for curIdx != zeroBasedIdx && cur != nil {
+//		if curIdx > zeroBasedIdx {
+//			return nil
+//		}
+//		cur = cur.Next
+//		curIdx++
+//	}
+//	return cur
+//}
 
 // BulkFront pushes multiple values into front of LinkedList in provided order
 //func (l *LinkedList) BulkFront(values []int) {
