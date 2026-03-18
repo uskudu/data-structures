@@ -83,6 +83,19 @@ func (l *LinkedList) PushBack(val int) {
 	l.Tail = n
 }
 
+func (l *LinkedList) DelFront() {
+	if l.Head == nil {
+		return
+	}
+
+	l.Head = l.Head.Next
+	l.Head.Previous = nil
+
+	if l.Head == nil {
+		l.Tail = nil
+	}
+}
+
 // Sliced turns LinkedList into slice
 func (l *LinkedList) Sliced() []int {
 	var res []int

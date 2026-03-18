@@ -13,6 +13,6 @@ func main() {
 
 	l.PushBack(2)
 	fmt.Println(l)
-	fmt.Println(l.Sliced())
-
+	l.DelFront()
+	fmt.Println(l)
 }
