@@ -19,7 +19,6 @@ func NewLinkedList(headVal int) *LinkedList {
 	head := &node{
 		Value: headVal,
 	}
-
 	return &LinkedList{Head: head, Tail: head}
 }
 
