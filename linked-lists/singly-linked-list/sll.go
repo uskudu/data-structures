@@ -23,7 +23,7 @@ func NewLinkedList(headVal int) *LinkedList {
 }
 
 // String returns string of nodes as if they were slice of struct {val int, next int}
-// example: [{1, 2}, {2, 5}, {5, 7}, {7, nil}]
+// example: [{1, 2} -> {2, 5} -> {5, 7} -> {7, nil}]
 func (l *LinkedList) String() string {
 	if l.Head == nil {
 		return "[]"
@@ -96,7 +96,7 @@ func (l *LinkedList) DelBack() {
 	l.Tail = cur
 }
 
-// Push sets node with Value val at index zeroBasedIdx
+// Push sets node with value val at index zeroBasedIdx
 // returns true if pushed, else false
 func (l *LinkedList) Push(zeroBasedIdx, val int) bool {
 	if zeroBasedIdx < 0 {
@@ -233,7 +233,7 @@ func (l *LinkedList) Reverse() {
 	for cur != nil {
 		next := cur.Next // next to process
 		cur.Next = prev  // so current element starts pointing to previous element instead of next
-		prev = cur       // so previous now is current element, prepared for next iteration to turn its point to it in line above (cur.Next = prev)
+		prev = cur       // so previous now is current element, prepared for next iteration to turn its point to it in line above (cur.next = prev)
 		cur = next       // move forward
 	}
 	l.Head = prev // update l.Head for metadata correctness
