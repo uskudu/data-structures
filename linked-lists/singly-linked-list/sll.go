@@ -232,11 +232,17 @@ func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *node {
 //}
 
 // ToSlice turns LinkedList into slice
-//func (l *LinkedList) ToSlice() []int {
-//	var res []int
-//	if l.Head == nil {
-//		return res
-//	}
-//
-//
-//}
+func (l *LinkedList) ToSlice() []int {
+	var res []int
+	if l.Head == nil {
+		return res
+	}
+
+	cur := l.Head
+	for cur != nil {
+		res = append(res, cur.Value)
+		cur = cur.Next
+	}
+
+	return res
+}

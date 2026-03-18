@@ -6,17 +6,14 @@ import (
 )
 
 func main() {
-	n := sll.NewNode(2)
+	n := sll.NewNode(1)
 
 	l := sll.NewLinkedList(n)
-
-	fmt.Println(l)
-
-	l.PushFront(1)
+	l.PushBack(2)
 	l.PushBack(3)
 	l.PushBack(4)
+	l.PushBack(5)
 
-	fmt.Println(l.String())
-
-	//l := sll.NewLinkedList()
+	fmt.Println(l)
+	fmt.Println(l.ToSlice())
 }
