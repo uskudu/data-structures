@@ -176,16 +176,32 @@ func (l *LinkedList) Del(zeroBasedIdx int) bool {
 	return true
 }
 
-//
-//// GetNodeByIndex returns Node with index zeroBasedIdx
+func (l *LinkedList) Len() int {
+	var res int
+
+	cur := l.Head
+	for cur != nil {
+		cur = cur.Next
+		res++
+	}
+	return res
+}
+
+// GetNodeByIndex returns Node with index zeroBasedIdx
 //func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) Node {
-//
+//	if zeroBasedIdx
 //}
-//
+
 //func (l *LinkedList) DelNode(node Node) bool {
 //
 //}
+
+// BulkFront pushes multiple values into front of LinkedList in provided order
+//func (l *LinkedList) BulkFront(values []int) {
 //
-//func (l *LinkedList) Len() int {
+//}
+
+// BulkBack pushes multiple values into back of LinkedList in provided order
+//func (l *LinkedList) BulkBack(values []int) {
 //
 //}
