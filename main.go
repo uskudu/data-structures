@@ -1,18 +1,18 @@
 package main
 
 import (
-	dll "awesomeDataStructures/linked-lists/doubly-linked-list"
+	cll "awesomeDataStructures/linked-lists/circular-linked-list"
 	"fmt"
 )
 
 func main() {
 
-	l := dll.NewLinkedList(1)
+	l := cll.NewLinkedList(1)
 
 	fmt.Println(l)
 
-	l.PushBack(2)
-	fmt.Println(l)
-	l.DelFront()
-	fmt.Println(l)
+	//l.PushBack(2)
+	//fmt.Println(l)
+	//l.DelFront()
+	//fmt.Println(l)
 }
