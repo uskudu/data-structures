@@ -34,15 +34,25 @@ func (l *LinkedList) String() string {
 	b.WriteString("[")
 
 	cur := l.Head
-	for cur.Next != nil {
+	for cur != nil {
+		prev := "nil"
+		next := "nil"
+
 		if cur.Previous != nil {
-			fmt.Fprintf(&b, "{%d, %d, %d} <-> ", cur.Previous.Value, cur.Value, cur.Next.Value)
-			cur = cur.Next
+			prev = fmt.Sprintf("%d", cur.Previous.Value)
 		}
-		fmt.Fprintf(&b, "{nil, %d, %d} <-> ", cur.Value, cur.Next.Value)
+		if cur.Next != nil {
+			next = fmt.Sprintf("%d", cur.Next.Value)
+		}
+
+		fmt.Fprintf(&b, "{%s, %d, %s}", prev, cur.Value, next)
+
+		if cur.Next != nil {
+			b.WriteString(" <-> ")
+		}
+
 		cur = cur.Next
 	}
-	fmt.Fprintf(&b, "{nil, %d, nil}", cur.Value)
 
 	b.WriteString("]")
 	return b.String()
@@ -52,9 +62,23 @@ func (l *LinkedList) PushFront(val int) {
 	n := &node{Value: val}
 
 	n.Next = l.Head
+	n.Next.Previous = n
 	l.Head = n
 
 	if l.Tail == nil {
 		l.Tail = n
 	}
+}
+
+func (l *LinkedList) PushBack(val int) {
+	n := &node{Value: val}
+
+	if l.Tail == nil {
+		l.Head = n
+		l.Tail = n
+		return
+	}
+	l.Tail.Next = n
+	n.Previous = l.Tail
+	l.Tail = n
 }

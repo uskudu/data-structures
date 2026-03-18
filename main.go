@@ -11,7 +11,8 @@ func main() {
 
 	fmt.Println(l)
 
-	l.PushFront(2)
-	l.PushFront(3)
+	l.PushBack(2)
 	fmt.Println(l)
+	//fmt.Println(l.Sliced())
+
 }
