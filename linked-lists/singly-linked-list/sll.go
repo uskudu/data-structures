@@ -227,12 +227,28 @@ func (l *LinkedList) GetNodeByIndex(zeroBasedIdx int) *node {
 //
 //}
 
-//func (l *LinkedList) Reverse() {
-//
-//}
+// Reverse reverses given LinkedList
+func (l *LinkedList) Reverse() {
+	if l.Head == nil {
+		return
+	}
 
-// ToSlice turns LinkedList into slice
-func (l *LinkedList) ToSlice() []int {
+	var prev *node // nil for l.Head to point to, so l.Head becomes last elem
+	cur := l.Head
+	l.Tail = l.Head // update l.Tail for metadata correctness
+
+	for cur != nil {
+		next := cur.Next // next to process
+		cur.Next = prev  // so current element starts pointing to previous element instead of next
+		prev = cur       // so previous now is current element, prepared for next iteration to turn its point to it in line above (cur.Next = prev)
+		cur = next       // move forward
+	}
+	l.Head = prev // update l.Head for metadata correctness
+	// prev stops at the last element of base LinkedList (before reverse)
+}
+
+// Sliced turns LinkedList into slice
+func (l *LinkedList) Sliced() []int {
 	var res []int
 	if l.Head == nil {
 		return res
@@ -243,6 +259,17 @@ func (l *LinkedList) ToSlice() []int {
 		res = append(res, cur.Value)
 		cur = cur.Next
 	}
-
 	return res
 }
+
+//// LinkedSlice may remake to accept tail too
+//// head and tail work like mathematical []
+////
+//// works like slicing in python, examples:
+//// you have LinkedList a := [1, 2, 3, 4, 5]
+//// b := a.LinkedSlice(2, 4, 1) will result b := [2, 3, 4]
+//// c := a.LinkedSlice(1, 4, 2) will result c := [1, 3]
+//// d := a.LinkedSlice(1, 4, -1) will result d := [4, 3, 2]
+//func (l *LinkedList) LinkedSlice(head int, tail int, step int) *LinkedList {
+//
+//}

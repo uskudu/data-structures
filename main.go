@@ -14,4 +14,9 @@ func main() {
 	l.PushBack(4)
 	l.PushBack(5)
 
+	fmt.Println(l)
+	l.Reverse()
+	fmt.Println(l)
+	fmt.Println(l.Head)
+	fmt.Println(l.Tail)
 }
