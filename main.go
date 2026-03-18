@@ -14,6 +14,4 @@ func main() {
 	l.PushBack(4)
 	l.PushBack(5)
 
-	fmt.Println(l)
-	fmt.Println(l.ToSlice())
 }
