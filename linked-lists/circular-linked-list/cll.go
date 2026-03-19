@@ -59,3 +59,16 @@ func (l *LinkedList) PushFront(val int) {
 		l.Tail = n
 	}
 }
+
+func (l *LinkedList) PushBack(val int) {
+	n := &node{Value: val}
+
+	if l.Tail == nil {
+		l.Head = n
+		l.Tail = n
+		return
+	}
+	l.Tail.Next = n
+	n.Next = l.Head
+	l.Tail = n
+}
