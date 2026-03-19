@@ -13,7 +13,9 @@ func main() {
 
 	l.Push(1)
 	l.Push(4)
-	l.Push(23)
 	fmt.Println(l)
-
+	fmt.Println(l.Pop())
+	fmt.Println(l)
+	l.Push(4)
+	fmt.Println(l)
 }

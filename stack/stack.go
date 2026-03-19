@@ -51,3 +51,13 @@ func (s *Stack) Push(elem int) bool {
 	s.Top++
 	return true
 }
+
+func (s *Stack) Pop() (int, bool) {
+	if s.Top == -1 {
+		return -1, false
+	}
+	val := s.Ar[s.Top]
+	s.Ar = s.Ar[:s.Top]
+	s.Top--
+	return val, true
+}
