@@ -13,11 +13,9 @@ func main() {
 
 	l.PushBack(2)
 	l.PushBack(3)
+	l.PushBack(1)
 	fmt.Println(l)
-	l.DelBack()
-	l.DelBack()
-	l.DelBack()
-	fmt.Println(l)
+	fmt.Println(l.Sliced())
 	//l.DelFront()
 	//fmt.Println(l)
 }

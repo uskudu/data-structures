@@ -108,3 +108,22 @@ func (l *LinkedList) DelBack() {
 	cur.Next = l.Head
 	l.Tail = cur
 }
+
+// Sliced turns LinkedList into slice
+func (l *LinkedList) Sliced() []int {
+	var res []int
+	if l.Head == nil {
+		return res
+	}
+
+	cur := l.Head
+	for cur != nil {
+		if cur.Next == l.Head {
+			res = append(res, cur.Value)
+			break
+		}
+		res = append(res, cur.Value)
+		cur = cur.Next
+	}
+	return res
+}
