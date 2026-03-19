@@ -9,10 +9,14 @@ func main() {
 
 	l := cll.NewLinkedList(1)
 
-	fmt.Println(l)
+	//fmt.Println(l)
 
 	l.PushBack(2)
 	l.PushBack(3)
+	fmt.Println(l)
+	l.DelFront()
+	l.DelFront()
+	l.DelFront()
 	fmt.Println(l)
 	//l.DelFront()
 	//fmt.Println(l)

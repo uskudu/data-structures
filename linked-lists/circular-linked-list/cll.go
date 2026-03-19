@@ -72,3 +72,20 @@ func (l *LinkedList) PushBack(val int) {
 	n.Next = l.Head
 	l.Tail = n
 }
+
+func (l *LinkedList) DelFront() {
+	if l.Head == nil {
+		return
+	}
+	if l.Head == l.Tail {
+		l.Head = nil
+		l.Tail = nil
+		return
+	}
+
+	l.Tail.Next = l.Head.Next
+	l.Head = l.Head.Next
+	if l.Head == nil {
+		l.Tail = nil
+	}
+}
