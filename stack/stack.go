@@ -8,7 +8,6 @@ import (
 type Stack struct {
 	Capacity int
 	Ar       []int
-	Top      int
 }
 
 func NewStack(capacity int) (*Stack, bool) {
@@ -19,7 +18,6 @@ func NewStack(capacity int) (*Stack, bool) {
 	return &Stack{
 		Capacity: capacity,
 		Ar:       ar,
-		Top:      -1,
 	}, true
 }
 
@@ -37,7 +35,7 @@ func (s *Stack) String() string {
 	}
 
 	b.WriteString("] ")
-	b.WriteString(strconv.Itoa(s.Top))
+	b.WriteString(strconv.Itoa(len(s.Ar) - 1))
 
 	return b.String()
 }
@@ -48,36 +46,34 @@ func (s *Stack) Push(elem int) bool {
 	}
 
 	s.Ar = append(s.Ar, elem)
-	s.Top++
 	return true
 }
 
 func (s *Stack) Pop() (int, bool) {
-	if s.Top == -1 {
+	if len(s.Ar) == 0 {
 		return -1, false
 	}
-	val := s.Ar[s.Top]
-	s.Ar = s.Ar[:s.Top]
-	s.Top--
+	val := s.Ar[len(s.Ar)-1]
+	s.Ar = s.Ar[:len(s.Ar)-1]
 	return val, true
 }
 
 func (s *Stack) GetTop() (int, bool) {
-	if s.Top == -1 {
+	if len(s.Ar) == 0 {
 		return -1, false
 	}
-	return s.Ar[s.Top], true
+	return s.Ar[len(s.Ar)-1], true
 }
 
 func (s *Stack) IsEmpty() bool {
-	if s.Top == -1 {
+	if len(s.Ar) == 0 {
 		return true
 	}
 	return false
 }
 
 func (s *Stack) Size() int {
-	if s.Top == -1 {
+	if len(s.Ar) == 0 {
 		return 0
 	}
 	return len(s.Ar)
