@@ -73,8 +73,5 @@ func (s *Stack) IsEmpty() bool {
 }
 
 func (s *Stack) Size() int {
-	if len(s.Ar) == 0 {
-		return 0
-	}
 	return len(s.Ar)
 }
