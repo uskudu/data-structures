@@ -231,9 +231,9 @@ func (l *LinkedList) Reverse() {
 	l.Tail = l.Head // update l.Tail for metadata correctness
 
 	for cur != nil {
-		next := cur.Next // next to process
-		cur.Next = prev  // so current element starts pointing to previous element instead of next
-		prev = cur       // so previous now is current element, prepared for next iteration to turn its point to it in line above (cur.next = prev)
+		next := cur.Next // next to process, for use at next iteration
+		cur.Next = prev  // current element starts pointing to previous element instead of next
+		prev = cur       // previous now is current element, prepared for next iteration to turn its point to it in line above (cur.next = prev)
 		cur = next       // move forward
 	}
 	l.Head = prev // update l.Head for metadata correctness
