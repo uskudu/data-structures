@@ -51,7 +51,7 @@ func (s *Stack) Push(elem int) bool {
 
 func (s *Stack) Pop() (int, bool) {
 	if len(s.Ar) == 0 {
-		return -1, false
+		return 0, false
 	}
 	val := s.Ar[len(s.Ar)-1]
 	s.Ar = s.Ar[:len(s.Ar)-1]
@@ -60,7 +60,7 @@ func (s *Stack) Pop() (int, bool) {
 
 func (s *Stack) GetTop() (int, bool) {
 	if len(s.Ar) == 0 {
-		return -1, false
+		return 0, false
 	}
 	return s.Ar[len(s.Ar)-1], true
 }
