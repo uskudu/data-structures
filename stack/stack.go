@@ -68,3 +68,10 @@ func (s *Stack) GetTop() (int, bool) {
 	}
 	return s.Ar[s.Top], true
 }
+
+func (s *Stack) IsEmpty() bool {
+	if s.Top == -1 {
+		return true
+	}
+	return false
+}
