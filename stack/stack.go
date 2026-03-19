@@ -1,5 +1,10 @@
 package stack
 
+import (
+	"strconv"
+	"strings"
+)
+
 type Stack struct {
 	Capacity int
 	Ar       *[]int
@@ -16,4 +21,20 @@ func NewStack(capacity int) (*Stack, bool) {
 		Ar:       &ar,
 		Top:      -1,
 	}, true
+}
+
+func (s *Stack) String() string {
+	b := strings.Builder{}
+
+	b.WriteString(strconv.Itoa(s.Capacity))
+	b.WriteString(" [")
+
+	for _, i := range *s.Ar {
+		b.WriteString(strconv.Itoa(i))
+	}
+
+	b.WriteString("] ")
+	b.WriteString(strconv.Itoa(s.Top))
+
+	return b.String()
 }
