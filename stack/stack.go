@@ -61,3 +61,10 @@ func (s *Stack) Pop() (int, bool) {
 	s.Top--
 	return val, true
 }
+
+func (s *Stack) GetTop() (int, bool) {
+	if s.Top == -1 {
+		return -1, false
+	}
+	return s.Ar[s.Top], true
+}

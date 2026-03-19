@@ -16,6 +16,5 @@ func main() {
 	fmt.Println(l)
 	fmt.Println(l.Pop())
 	fmt.Println(l)
-	l.Push(4)
-	fmt.Println(l)
+	fmt.Println(l.GetTop())
 }
