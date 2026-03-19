@@ -66,10 +66,7 @@ func (s *Stack) GetTop() (int, bool) {
 }
 
 func (s *Stack) IsEmpty() bool {
-	if len(s.Ar) == 0 {
-		return true
-	}
-	return false
+	return len(s.Ar) == 0
 }
 
 func (s *Stack) Size() int {
