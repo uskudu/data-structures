@@ -7,7 +7,7 @@ import (
 
 type Stack struct {
 	Capacity int
-	Ar       *[]int
+	Ar       []int
 	Top      int
 }
 
@@ -18,7 +18,7 @@ func NewStack(capacity int) (*Stack, bool) {
 	ar := make([]int, 0, capacity)
 	return &Stack{
 		Capacity: capacity,
-		Ar:       &ar,
+		Ar:       ar,
 		Top:      -1,
 	}, true
 }
@@ -29,12 +29,25 @@ func (s *Stack) String() string {
 	b.WriteString(strconv.Itoa(s.Capacity))
 	b.WriteString(" [")
 
-	for _, i := range *s.Ar {
-		b.WriteString(strconv.Itoa(i))
+	for i, elem := range s.Ar {
+		if i != 0 {
+			b.WriteString(" ")
+		}
+		b.WriteString(strconv.Itoa(elem))
 	}
 
 	b.WriteString("] ")
 	b.WriteString(strconv.Itoa(s.Top))
 
 	return b.String()
+}
+
+func (s *Stack) Push(elem int) bool {
+	if len(s.Ar) == s.Capacity {
+		return false
+	}
+
+	s.Ar = append(s.Ar, elem)
+	s.Top++
+	return true
 }
