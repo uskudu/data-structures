@@ -89,3 +89,22 @@ func (l *LinkedList) DelFront() {
 		l.Tail = nil
 	}
 }
+
+func (l *LinkedList) DelBack() {
+	if l.Tail == nil {
+		return
+	}
+	if l.Head == l.Tail {
+		l.Head = nil
+		l.Tail = nil
+		return
+	}
+
+	cur := l.Head
+	for cur.Next != l.Tail {
+		cur = cur.Next
+	}
+
+	cur.Next = l.Head
+	l.Tail = cur
+}
