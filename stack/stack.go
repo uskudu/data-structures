@@ -75,3 +75,10 @@ func (s *Stack) IsEmpty() bool {
 	}
 	return false
 }
+
+func (s *Stack) Size() int {
+	if s.Top == -1 {
+		return 0
+	}
+	return len(s.Ar)
+}

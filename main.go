@@ -12,9 +12,9 @@ func main() {
 	l.Push(1)
 	l.Push(4)
 	fmt.Println(l)
-	fmt.Println(l.IsEmpty())
+	fmt.Println(l.Size())
 	l.Pop()
 	l.Pop()
 	fmt.Println(l)
-	fmt.Println(l.IsEmpty())
+	fmt.Println(l.Size())
 }
