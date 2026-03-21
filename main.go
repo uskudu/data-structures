@@ -1,20 +1,21 @@
 package main
 
 import (
-	"awesomeDataStructures/stack"
+	q "awesomeDataStructures/queue"
 	"fmt"
 )
 
 func main() {
 
-	l, _ := stack.NewStack(2)
+	q := q.NewQueue(1)
 
-	l.Push(1)
-	l.Push(4)
-	fmt.Println(l)
-	fmt.Println(l.Size())
-	l.Pop()
-	l.Pop()
-	fmt.Println(l)
-	fmt.Println(l.Size())
+	fmt.Println(q)
+
+	q.Enq(3)
+	q.Enq(3)
+	q.Enq(3)
+	fmt.Println(q)
+	p, _ := q.Deq()
+	fmt.Println(p)
+	fmt.Println(q)
 }
