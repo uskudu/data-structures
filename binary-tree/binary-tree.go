@@ -1,10 +1,5 @@
 package binary_tree
 
-import (
-	"strconv"
-	"strings"
-)
-
 type binaryTree struct {
 	root *node
 }
@@ -18,17 +13,32 @@ func NewBinaryTree(rootNodeValue int) *binaryTree {
 	return &binaryTree{t}
 }
 
-// String prints in BFS
-func (t *binaryTree) String() string {
-	if t.root == nil {
-		return "empty"
+func (t *binaryTree) Insert(val int) {
+	n := &node{
+		val: val,
 	}
-	b := &strings.Builder{}
 
-	printer(t.root, b)
+	if t.root == nil {
+		t.root = n
+		return
+	}
 
-	return b.String()
+	var inner func(cur *node)
+
+	inner = func(cur *node) {
+		if val > cur.val {
+			if cur.left == nil {
+				cur.left = n
+				return
+			}
+			inner(cur.left)
+		} else {
+			if cur.right == nil {
+				cur.right = n
+				return
+			}
+			inner(cur.left)
+		}
+	}
+	inner(t.root)
 }
-
-
-func ()
