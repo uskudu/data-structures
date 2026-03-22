@@ -74,3 +74,12 @@ func (q *Queue) Deq() (int, bool) {
 	}
 	return v, true
 }
+
+func (q *Queue) Peek() (int, bool) {
+	if q.Length() == 0 {
+		return 0, false
+	}
+	return q.head.val, true
+}
+
+// for deque just add push front and del back funcs

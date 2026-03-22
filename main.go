@@ -11,11 +11,10 @@ func main() {
 
 	fmt.Println(q)
 
-	q.Enq(3)
-	q.Enq(3)
+	q.Enq(2)
 	q.Enq(3)
 	fmt.Println(q)
-	p, _ := q.Deq()
-	fmt.Println(p)
+	q.Peek()
+	fmt.Println(q.Peek())
 	fmt.Println(q)
 }
