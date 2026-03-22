@@ -1,20 +1,13 @@
 package main
 
 import (
-	q "awesomeDataStructures/queue"
+	bt "awesomeDataStructures/binary-tree"
 	"fmt"
 )
 
 func main() {
 
-	q := q.NewQueue(1)
+	t := bt.NewBinaryTree(2)
 
-	fmt.Println(q)
-
-	q.Enq(2)
-	q.Enq(3)
-	fmt.Println(q)
-	q.Peek()
-	fmt.Println(q.Peek())
-	fmt.Println(q)
+	fmt.Println(t)
 }
