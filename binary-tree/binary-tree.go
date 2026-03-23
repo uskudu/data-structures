@@ -45,29 +45,29 @@ func (t *binaryTree) Sliced() [][]int {
 }
 
 func (t *binaryTree) Insert(val int) {
+	newNode := &node{val: val}
+
 	if t.root == nil {
-		t.root = &node{val: val}
+		t.root = newNode
 		return
 	}
 
-	var inner func(cur *node)
-
-	inner = func(cur *node) {
+	cur := t.root
+	for {
 		if val < cur.val {
 			if cur.left == nil {
-				cur.left = &node{val: val}
+				cur.left = newNode
 				return
 			}
-			inner(cur.left)
+			cur = cur.left
 		} else {
 			if cur.right == nil {
-				cur.right = &node{val: val}
+				cur.right = newNode
 				return
 			}
-			inner(cur.right)
+			cur = cur.right
 		}
 	}
-	inner(t.root)
 }
 
 //func (t *binaryTree) Delete(n *node) bool {
@@ -75,19 +75,28 @@ func (t *binaryTree) Insert(val int) {
 //		return false
 //	}
 //	var inner func(cur *node) bool
+//	prev := t.root
 //
 //	inner = func(cur *node) bool {
 //		if cur == nil {
 //			return false
 //		}
 //
-//		if cur == n {
 //
+//		if cur == n {
+//			if prev.left == n {
+//				prev.left = nil
+//				prev.
+//			}
 //			return true
 //		}
+//
+//		prev = cur
 //
 //		inner(cur.left)
 //		inner(cur.right)
 //		return false
 //	}
+//
+//	return inner(t.root)
 //}
