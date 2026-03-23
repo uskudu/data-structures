@@ -25,4 +25,5 @@ func main() {
 	t.Insert(55550)
 	t.Insert(344)
 	fmt.Println(t.Sliced())
+
 }

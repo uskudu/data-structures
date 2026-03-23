@@ -70,33 +70,39 @@ func (t *binaryTree) Insert(val int) {
 	}
 }
 
-//func (t *binaryTree) Delete(n *node) bool {
-//	if t.root == nil {
-//		return false
-//	}
-//	var inner func(cur *node) bool
-//	prev := t.root
-//
-//	inner = func(cur *node) bool {
-//		if cur == nil {
-//			return false
-//		}
-//
-//
-//		if cur == n {
-//			if prev.left == n {
-//				prev.left = nil
-//				prev.
-//			}
-//			return true
-//		}
-//
-//		prev = cur
-//
-//		inner(cur.left)
-//		inner(cur.right)
-//		return false
-//	}
-//
-//	return inner(t.root)
-//}
+func (t *binaryTree) Delete(val int) {
+	t.root = deleteNode(t.root, val)
+}
+
+func deleteNode(n *node, val int) *node {
+	if n == nil {
+		return nil
+	}
+
+	if val < n.val {
+		n.left = deleteNode(n.left, val)
+	} else if val > n.val {
+		n.right = deleteNode(n.right, val)
+	} else {
+		// no children
+		if n.left == nil && n.right == nil {
+			return nil
+		}
+		// one child
+		if n.left == nil {
+			return n.right
+		}
+		if n.right == nil {
+			return n.left
+		}
+		// two children: replace with in-order successor (smallest in right subtree)
+		successor := n.right
+		for successor.left != nil {
+			successor = successor.left
+		}
+		n.val = successor.val
+		n.right = deleteNode(n.right, successor.val)
+	}
+
+	return n
+}
