@@ -19,4 +19,7 @@ func main() {
 	q.Insert(19)
 
 	fmt.Println(q)
+
+	q.IncreaseKey(3, 150)
+	fmt.Println(q)
 }
