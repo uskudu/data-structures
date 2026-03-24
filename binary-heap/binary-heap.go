@@ -1,5 +1,7 @@
 package binary_heap
 
+import "math"
+
 type minHeap struct {
 	ar []int
 }
@@ -39,7 +41,7 @@ func (h *minHeap) Insert(v int) {
 	}
 }
 
-func (h *minHeap) Decrease(i, newVal int) {
+func (h *minHeap) DecreaseKey(i, newVal int) {
 	if newVal > h.ar[i] {
 		panic("new value is greater than current value")
 	}
@@ -53,5 +55,45 @@ func (h *minHeap) Decrease(i, newVal int) {
 		}
 		h.ar[i], h.ar[p] = h.ar[p], h.ar[i]
 		i = p
+	}
+}
+
+func (h *minHeap) ExtractMin() (int, bool) {
+	if len(h.ar) == 0 {
+		return 0, false
+	}
+	if len(h.ar) == 1 {
+		x := h.ar[0]
+		clear(h.ar)
+		return x, true
+	}
+	x := h.ar[0]
+
+	h.ar[0] = h.ar[len(h.ar)-1]
+	h.ar = h.ar[:len(h.ar)-1]
+	h.MinHeapify(0)
+	return x, true
+}
+
+func (h *minHeap) DeleteKey(i int) bool {
+	h.DecreaseKey(i, int(math.Inf(-1)))
+	_, ok := h.ExtractMin()
+	return ok
+}
+
+func (h *minHeap) MinHeapify(i int) {
+	l, r, n := h.Left(i), h.Right(i), len(h.ar)
+	smallest := i
+
+	if l < n && h.ar[l] < h.ar[smallest] {
+		smallest = l
+	}
+	if r < n && h.ar[r] < h.ar[smallest] {
+		smallest = l
+	}
+
+	if i != smallest {
+		h.ar[i], h.ar[smallest] = h.ar[smallest], h.ar[i]
+		h.MinHeapify(smallest)
 	}
 }

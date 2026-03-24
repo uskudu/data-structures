@@ -19,7 +19,7 @@ func main() {
 	q.Insert(19)
 
 	fmt.Println(q)
-
-	q.Decrease(3, 2)
+	m, ok := q.ExtractMin()
+	fmt.Println(m, ok)
 	fmt.Println(q)
 }
