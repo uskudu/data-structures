@@ -1,29 +1,22 @@
 package main
 
 import (
-	bt "awesomeDataStructures/binary-tree"
+	bh "awesomeDataStructures/binary-heap"
 	"fmt"
 )
 
 func main() {
+	q := bh.NewMinHeap()
 
-	t := bt.NewBinaryTree(2)
+	q.Insert(1)
+	q.Insert(9)
+	q.Insert(2)
+	q.Insert(8)
+	q.Insert(3)
+	q.Insert(7)
+	q.Insert(4)
+	q.Insert(6)
+	q.Insert(5)
 
-	t.Insert(1)
-	t.Insert(3)
-	t.Insert(776)
-	t.Insert(6)
-	t.Insert(24)
-	t.Insert(8)
-	t.Insert(8)
-	t.Insert(2)
-	t.Insert(3)
-	t.Insert(4)
-	t.Insert(-1)
-	t.Insert(30)
-	t.Insert(340)
-	t.Insert(55550)
-	t.Insert(344)
-	fmt.Println(t.Sliced())
-
+	fmt.Println(q)
 }

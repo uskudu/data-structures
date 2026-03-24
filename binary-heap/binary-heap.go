@@ -4,6 +4,11 @@ type minHeap struct {
 	ar []int
 }
 
+func NewMinHeap() *minHeap {
+	var ar []int
+	return &minHeap{ar: ar}
+}
+
 func (h *minHeap) Parent(i int) int {
 	return h.ar[(i-1)/2]
 }
@@ -19,4 +24,17 @@ func (h *minHeap) GetMin() (int, bool) {
 		return 0, false
 	}
 	return h.ar[0], true
+}
+
+func (h *minHeap) Insert(v int) {
+	h.ar = append(h.ar, v)
+
+	for i := len(h.ar) - 1; i > 0; {
+		p := (i - 1) / 2
+		if h.ar[p] <= h.ar[i] {
+			break
+		}
+		h.ar[i], h.ar[p] = h.ar[p], h.ar[i]
+		i = p
+	}
 }
