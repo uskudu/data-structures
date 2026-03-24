@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	q := bh.NewMinHeap()
+	q := bh.NewMaxHeap()
 
 	q.Insert(40)
 	q.Insert(43)
@@ -18,8 +18,5 @@ func main() {
 	q.Insert(57)
 	q.Insert(19)
 
-	fmt.Println(q)
-	m, ok := q.ExtractMin()
-	fmt.Println(m, ok)
 	fmt.Println(q)
 }
